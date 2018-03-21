@@ -15,6 +15,9 @@ class QuestionBox:
 
         self.master = master#save master frame
         self.questionFrame = tk.Frame(self.master,bg=self.master['bg'])
+
+    def destroy(self):
+        self.questionFrame.destroy()
         
 
     #Create Visual Elements related to question

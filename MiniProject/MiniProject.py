@@ -113,9 +113,6 @@ class Application:
         self.submitquestionbutton = tk.Button(self.bottombar,text='Submit Question',command=self.submitQuestion,state='disabled')
         self.submitquestionbutton.pack(side="right")
 
-        #turn off resizing for certain frames
-        self.bottombar.pack_propagate(0)
-
         return
 
     #function prompts a user to create a profile, giving an error if the profile exists
@@ -277,25 +274,43 @@ class Application:
     def submitQuestion(self):
         #Stop the timer
         self.timer.stopClock()
+
+        #disable submit button
+        self.submitquestionbutton['state'] = 'disabled'
+
+        #create label to inform the user if they are correct
+        self.correctLabel = tk.Label(self.mainarea,bg=self.mainarea['bg'],font=(tk.font.nametofont("TkDefaultFont"), 16))
+
         
         #if question is answered correctly, add point value to score, else sub incorrect value from score
         if self.question.getAnswer():
             self.profileScore += self.question.correctvalue
+            self.correctLabel.configure(text='Correct!',fg='green',)
         else:
-            self.profileScore += self.question.wrongvalue # add 5 for trying 
-
-        #enable next question button
-        self.nextquestionbutton['state'] = 'normal'
-        
-        #disable submit button
-        self.submitquestionbutton['state'] = 'disabled'
-
+            self.profileScore += self.question.wrongvalue # add wrong value for trying
+            self.correctLabel.configure(text='Incorrect!',fg='red')
+                    
         #destroy question
-        self.question.questionFrame.destroy()
+        #self.question.questionFrame.destroy()
+
+        #add label to determine correctness
+        self.correctLabel.pack()
+        
 
         #update profile score variable
         self.profileScoreVar.set("Score: " +str(self.profileScore))
+
+        #cleanup screen after 0.5 seconds
+        self.root.after(1500,self.cleanup)
         return
+
+    def cleanup(self):
+        #cleanup the question
+        self.question.destroy()
+        self.correctLabel.destroy()
+
+        #re-enable next question button
+        self.nextquestionbutton['state'] = 'normal'
 
     #End Application
     def end(self):
