@@ -21,10 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CreateProfilePopup.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ProfileSelectPopup.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MiniProject.py" />
+    <Compile Include="Questions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Timer.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
