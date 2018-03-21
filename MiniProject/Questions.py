@@ -1,7 +1,10 @@
+
+#file imports
 import tkinter as tk
 
 from fractions import gcd
 import math
+import random
 
 #Abstract Class for question box
 class QuestionBox:
