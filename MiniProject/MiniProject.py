@@ -265,7 +265,6 @@ class Application:
                                        SolveXQuestion(self.mainarea)])#set question to random choice from question Category list
 
         self.question.createQuestion()#Place Question on screen
-
         self.timer.resetClock()#start clock
         self.timer.restartClock()
         return

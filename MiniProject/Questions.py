@@ -237,7 +237,7 @@ class SolveXQuestion(QuestionBox):
 
        #create stringVar to hold question
        self.questionString = tk.StringVar()
-       self.questionString.set("Question: Solve for x: "+str(self.a)+"x"+self.displaySign(self.b)+"="+str(self.y))
+       self.questionString.set("Question: Solve for x: \n"+str(self.a)+"x"+self.displaySign(self.b)+"="+str(self.y))
 
        #Create Question Label
        self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
