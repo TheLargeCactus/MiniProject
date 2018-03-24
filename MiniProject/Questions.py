@@ -11,15 +11,12 @@ class QuestionBox:
     def __init__(self,master):
         self.correctvalue = 0 #change these values in specializations
         self.wrongvalue = 0
-
-
         self.master = master#save master frame
         self.questionFrame = tk.Frame(self.master,bg=self.master['bg'])
 
     def destroy(self):
         self.questionFrame.destroy()
         
-
     #Create Visual Elements related to question
     def createQuestion(self):
         #overload this in a specialization to create question types
@@ -76,7 +73,7 @@ class divisionQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 1
+        self.wrongvalue = 2
 
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
@@ -109,13 +106,14 @@ class divisionQuestion(QuestionBox):
         if int(self.answerEntryVar.get()) == self.answer:
             return True
         else:
+
             return False
 
 class subtractQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 1
+        self.wrongvalue = 2
 
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
@@ -150,7 +148,7 @@ class multiplicationQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 1
+        self.wrongvalue = 2
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
 
@@ -186,7 +184,7 @@ class AdditionQuestion(QuestionBox):
         QuestionBox.__init__(self,master)#initialize base class
 
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 1
+        self.wrongvalue = 2
 
     def createQuestion(self):#overload of base class create question method
        self.questionFrame.pack(expand="True")
