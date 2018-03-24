@@ -76,7 +76,7 @@ class divisionQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 5
+        self.wrongvalue = 1
 
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
@@ -115,7 +115,7 @@ class subtractQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 5
+        self.wrongvalue = 1
 
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
@@ -150,7 +150,7 @@ class multiplicationQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 5
+        self.wrongvalue = 1
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
 
@@ -186,7 +186,7 @@ class AdditionQuestion(QuestionBox):
         QuestionBox.__init__(self,master)#initialize base class
 
         self.correctvalue = 10#set values for base class variables
-        self.wrongvalue = 5
+        self.wrongvalue = 1
 
     def createQuestion(self):#overload of base class create question method
        self.questionFrame.pack(expand="True")

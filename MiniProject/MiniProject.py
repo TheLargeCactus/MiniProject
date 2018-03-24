@@ -284,10 +284,10 @@ class Application:
         #if question is answered correctly, add point value to score, else sub incorrect value from score
         if self.question.getAnswer():
             self.profileScore += self.question.correctvalue
-            self.correctLabel.configure(text='Correct!',fg='green',)
+            self.correctLabel.configure(text='Correct!     + '+str(self.question.correctvalue),fg='blue',)
         else:
             self.profileScore += self.question.wrongvalue # add wrong value for trying
-            self.correctLabel.configure(text='Incorrect!',fg='red')
+            self.correctLabel.configure(text='Incorrect!     + '+str(self.question.wrongvalue),fg='red')
                     
         #destroy question
         #self.question.questionFrame.destroy()
