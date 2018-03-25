@@ -287,7 +287,7 @@ class Application:
             self.correctLabel.configure(text='Correct!     + '+str(self.question.correctvalue),fg='blue',)
         elif self.profileScore == 0:
             self.profileScore = 0
-            self.correctLabel.configure(text='Incorrect!     + 0 ', fg= 'red')
+            self.correctLabel.configure(text='Incorrect!     - 0 ', fg= 'red')
         else:
             self.profileScore -= self.question.wrongvalue # add wrong value for trying
             self.correctLabel.configure(text='Incorrect!     - '+str(self.question.wrongvalue),fg='red')
