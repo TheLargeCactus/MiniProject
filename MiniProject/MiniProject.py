@@ -12,7 +12,7 @@ import sqlite3
 import os
 import random
 import time
-
+#a
 #import other class files
 from Timer import *
 from ProfileSelectPopup import *
@@ -257,13 +257,7 @@ class Application:
         #enable submit button
         self.submitquestionbutton['state'] = 'normal'
 
-        self.question = random.choice([GCDivisorQuestion(self.mainarea),
-                                       divisionQuestion(self.mainarea),
-                                       AdditionQuestion(self.mainarea),
-                                       rootQuestion(self.mainarea),
-                                       subtractQuestion(self.mainarea),
-                                       multiplicationQuestion(self.mainarea),
-                                       SolveXQuestion(self.mainarea)])#set question to random choice from question Category list
+        self.question = random.choice([SolveXQuestion(self.mainarea)])#set question to random choice from question Category list
 
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock

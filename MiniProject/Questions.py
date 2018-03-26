@@ -268,7 +268,7 @@ class SolveXQuestion(QuestionBox):
     def createQuestion(self):#overload of base class create question method
        self.questionFrame.pack(expand="True")
 
-       self.x = random.randint(-10,10)#Value of x
+       self.x = random.randint(1,10)# zero can be in the range -> can't divide by zero
        self.a = random.randint(-10,10)#Value of a
        self.b = random.randint(-10,10)#Value of b
        
