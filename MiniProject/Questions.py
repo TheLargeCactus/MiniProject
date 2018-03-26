@@ -17,12 +17,14 @@ class QuestionBox:
         self.correctLabel = tk.Label(self.questionFrame,bg=self.master['bg'],font=(tk.font.nametofont("TkDefaultFont"), 16),text='')
         self.correctLabel.pack(side='bottom')
 
+        
+
+    #function to cleanup question
     def destroy(self):
         self.questionFrame.destroy()
 
+    #function to display correct or incorrect answer
     def displayCorrect(self):
-
-
         if self.getAnswer():
             self.correctLabel.configure(fg="Green",text='Correct! +'+str(self.correctvalue))
         else:

@@ -113,7 +113,6 @@ class Application:
         self.submitquestionbutton = tk.Button(self.bottombar,text='Submit Question',command=self.submitQuestion,state='disabled')
         self.submitquestionbutton.pack(side="right")
 
-        return
 
     #function prompts a user to create a profile, giving an error if the profile exists
     def createProfile(self):
