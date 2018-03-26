@@ -251,6 +251,10 @@ class Application:
     #######################
 
     def nextQuestion(self):
+        #Destroy question if it already exists
+        if not self.question == None:
+            self.question.destroy()
+
         #disable question button so question is not-skipable
         self.nextquestionbutton['state'] = 'disabled'
 
@@ -272,48 +276,36 @@ class Application:
 
     #function called after question is submitted
     def submitQuestion(self):
-        #Stop the timer
-        self.timer.stopClock()
 
-        #disable submit button
-        self.submitquestionbutton['state'] = 'disabled'
+        #enable next question button
+        self.nextquestionbutton['state'] = 'normal'
 
-        #create label to inform the user if they are correct
-        self.correctLabel = tk.Label(self.mainarea,bg=self.mainarea['bg'],font=(tk.font.nametofont("TkDefaultFont"), 16))
+        #display correct or not
+        self.question.displayCorrect()
 
-        
         #if question is answered correctly, add point value to score, else sub incorrect value from score
         if self.question.getAnswer():
+            #Stop the timer
+            self.timer.stopClock()
             self.profileScore += self.question.correctvalue
-            self.correctLabel.configure(text='Correct!     + '+str(self.question.correctvalue),fg='blue',)
-        elif self.profileScore == 0:
-            self.profileScore = 0
-            self.correctLabel.configure(text='Incorrect!     - 0 ', fg= 'red')
+            self.submitquestionbutton['state'] = 'disabled'
         else:
             self.profileScore -= self.question.wrongvalue # add wrong value for trying
-            self.correctLabel.configure(text='Incorrect!     - '+str(self.question.wrongvalue),fg='red')
-                    
-        #destroy question
-        #self.question.questionFrame.destroy()
 
-        #add label to determine correctness
-        self.correctLabel.pack()
-        
+            #if profileScore goes below 0, set profile score to 0
+            if self.profileScore < 0:
+                self.profileScore = 0
+
+
+        #display correct or incorrect
 
         #update profile score variable
         self.profileScoreVar.set("Score: " +str(self.profileScore))
 
-        #cleanup screen after 0.5 seconds
-        self.root.after(1500,self.cleanup)
         return
 
     def cleanup(self):
-        #cleanup the question
         self.question.destroy()
-        self.correctLabel.destroy()
-
-        #re-enable next question button
-        self.nextquestionbutton['state'] = 'normal'
 
     #End Application
     def end(self):

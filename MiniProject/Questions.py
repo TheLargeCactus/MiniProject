@@ -14,8 +14,21 @@ class QuestionBox:
         self.master = master#save master frame
         self.questionFrame = tk.Frame(self.master,bg=self.master['bg'])
 
+        self.correctLabel = tk.Label(self.questionFrame,bg=self.master['bg'],font=(tk.font.nametofont("TkDefaultFont"), 16),text='')
+        self.correctLabel.pack(side='bottom')
+
     def destroy(self):
         self.questionFrame.destroy()
+
+    def displayCorrect(self):
+
+
+        if self.getAnswer():
+            self.correctLabel.configure(fg="Green",text='Correct! +'+str(self.correctvalue))
+        else:
+            self.correctLabel.configure(fg="Red",text='Incorrect! -'+str(self.wrongvalue))
+
+        
         
     #Create Visual Elements related to question
     def createQuestion(self):
@@ -75,6 +88,7 @@ class rootQuestion(QuestionBox):
             return True
         else:
             return False
+
 class GCDivisorQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
