@@ -33,48 +33,6 @@ class QuestionBox:
 #######################
 ####  Questions    ####
 #######################
-class rootQuestion(QuestionBox):
-    def __init__(self,master):
-        QuestionBox.__init__(self,master)
-        self.correctvalue = 50 #set values for base class variables
-        self.wrongvalue = 5
-
-    def createQuestion(self):#overload of base class create question method
-        self.questionFrame.pack(expand="True")
-
-        self.x = random.randint(2,5)# random root, will do up to 5th roots
-        self.y = random.randint(2,4)# up to 4, makes sure number is not too big
-
-        self.y= self.y**self.x #creates answer -> makes sure the number has a whole root
-
-        self.answer = self.y ** (1/self.x) #calculate answer
-
-        #create stringVar to hold question
-        self.questionString = tk.StringVar()
-
-        if (self.x == 2):
-            self.questionString.set("Question: What is the square root of "+str(self.y)+ "?")
-        elif(self.x==3):
-            self.questionString.set("Question: What is the cube root of "+str(self.y)+ "?")
-        else:
-             self.questionString.set("Question: What is the "+str(self.x)+"th root of "+str(self.y)+ "?")
-        
-        #Create Question Label
-        self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
-        self.questionLabel.pack(side="top")
-
-        #create variable to hold answer entry
-        self.answerEntryVar = tk.StringVar()
-
-        #create answer entry
-        self.answerentry = tk.Entry(self.questionFrame,textvariable=self.answerEntryVar)
-        self.answerentry.pack(side="bottom",anchor='s')
-
-    def getAnswer(self):
-        if int(self.answerEntryVar.get()) == self.answer:
-            return True
-        else:
-            return False
 class GCDivisorQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)

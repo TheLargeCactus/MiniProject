@@ -260,7 +260,6 @@ class Application:
         self.question = random.choice([GCDivisorQuestion(self.mainarea),
                                        divisionQuestion(self.mainarea),
                                        AdditionQuestion(self.mainarea),
-                                       rootQuestion(self.mainarea),
                                        subtractQuestion(self.mainarea),
                                        multiplicationQuestion(self.mainarea),
                                        SolveXQuestion(self.mainarea)])#set question to random choice from question Category list
