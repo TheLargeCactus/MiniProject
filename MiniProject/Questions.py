@@ -270,7 +270,7 @@ class SolveXQuestion(QuestionBox):
 
        sign = [-1,1]
 
-       self.x = random.randint(1,10) * random.choice(sign)#zero can be in the range -> can't divide by zero
+       self.x = random.randint(1,10) * random.choice(sign)#
        self.a = random.randint(1,10) * random.choice(sign)#Value of a
        self.b = random.randint(1,10) * random.choice(sign)#Value of b
        
