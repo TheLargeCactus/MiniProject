@@ -48,6 +48,46 @@ class QuestionBox:
 #######################
 ####  Questions    ####
 #######################
+class exponentQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)
+        self.correctvalue = 50 #set values for base class variables
+        self.wrongvalue = 5
+
+    def createQuestion(self):#overload of base class create question method
+        self.questionFrame.pack(expand="True")
+
+        self.x = random.randint(2,10)# 
+        self.y = random.randint(2,10)# 
+
+        self.answer = self.x ** self.y  #calculate answer
+
+        #create stringVar to hold question
+        self.questionString = tk.StringVar()
+
+        if (self.y == 2):
+            self.questionString.set("Question: What is"+str(self.x)+" squared? ")
+        elif(self.y==3):
+            self.questionString.set("Question: What is"+str(self.x)+" cubed? ")
+        else:
+             self.questionString.set("Question: What is "+str(self.x)+" to the "+str(self.y)+ "th power?")
+        
+        #Create Question Label
+        self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+        self.questionLabel.pack(side="top")
+
+        #create variable to hold answer entry
+        self.answerEntryVar = tk.StringVar()
+
+        #create answer entry
+        self.answerentry = tk.Entry(self.questionFrame,textvariable=self.answerEntryVar)
+        self.answerentry.pack(side="bottom",anchor='s')
+
+    def getAnswer(self):
+        if int(self.answerEntryVar.get()) == self.answer:
+            return True
+        else:
+            return False
 class fractionDivision(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
