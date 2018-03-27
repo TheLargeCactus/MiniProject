@@ -1,7 +1,7 @@
 
 #file imports
 import tkinter as tk
-
+from fractions import Fraction
 from fractions import gcd
 import math
 import random
@@ -48,6 +48,43 @@ class QuestionBox:
 #######################
 ####  Questions    ####
 #######################
+class fractionQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)
+        self.correctvalue = 30#set values for base class variables
+        self.wrongvalue = 3
+
+    def createQuestion(self):#overload of base class create question method
+        self.questionFrame.pack(expand="True")
+
+        self.n = random.randint(1,100)
+        self.d = random.randint(1,10)*random.randint(2,10)
+
+        temp = Fraction(self.n,self.d)
+
+        self.answer = str(temp)# temp is converted to string and loaded to answer 
+
+        #create stringVar to hold question
+        self.questionString = tk.StringVar()
+
+        self.questionString.set("Reduce the fraction "+str(self.n)+"/"+str(self.d))
+        
+        #Create Question Label
+        self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+        self.questionLabel.pack(side="top")
+
+        #create variable to hold answer entry
+        self.answerEntryVar = tk.StringVar()
+
+        #create answer entry
+        self.answerentry = tk.Entry(self.questionFrame,textvariable=self.answerEntryVar)
+        self.answerentry.pack(side="bottom",anchor='s')
+
+    def getAnswer(self):
+        if str(self.answerEntryVar.get()) == self.answer:
+            return True
+        else:
+            return False
 class rootQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)

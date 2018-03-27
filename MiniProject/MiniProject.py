@@ -277,7 +277,8 @@ class Application:
         #enable submit button
         self.submitquestionbutton['state'] = 'normal'
 
-        self.question = random.choice([GCDivisorQuestion(self.mainarea),
+        self.question = random.choice([fractionQuestion(self.mainarea),
+                                       GCDivisorQuestion(self.mainarea),
                                        divisionQuestion(self.mainarea),
                                        AdditionQuestion(self.mainarea),
                                        rootQuestion(self.mainarea),
