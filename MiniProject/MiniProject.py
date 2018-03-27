@@ -277,14 +277,7 @@ class Application:
         #enable submit button
         self.submitquestionbutton['state'] = 'normal'
 
-        self.question = random.choice([fractionQuestion(self.mainarea),
-                                       GCDivisorQuestion(self.mainarea),
-                                       divisionQuestion(self.mainarea),
-                                       AdditionQuestion(self.mainarea),
-                                       rootQuestion(self.mainarea),
-                                       subtractQuestion(self.mainarea),
-                                       multiplicationQuestion(self.mainarea),
-                                       SolveXQuestion(self.mainarea)])#set question to random choice from question Category list
+        self.question = random.choice([fractionAddition(self.mainarea)])#set question to random choice from question Category list
 
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock

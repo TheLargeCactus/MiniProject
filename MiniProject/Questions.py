@@ -48,6 +48,46 @@ class QuestionBox:
 #######################
 ####  Questions    ####
 #######################
+class fractionAddition(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)
+        self.correctvalue = 40#set values for base class variables
+        self.wrongvalue = 3
+
+    def createQuestion(self):#overload of base class create question method
+        self.questionFrame.pack(expand="True")
+
+        self.n = random.randint(1,10)
+        self.d = random.randint(1,20)
+
+        self.n1= random.randint(1,10)
+        self.d1= random.randint(1,20)
+
+        temp = Fraction(self.n,self.d) + Fraction(self.n1,self.d1)
+
+        self.answer = str(temp)# temp is converted to string and loaded to answer 
+
+        #create stringVar to hold question
+        self.questionString = tk.StringVar()
+
+        self.questionString.set("Add up and reduce, What is "+str(self.n)+"/"+str(self.d) +" + " + str(self.n1)+"/"+str(self.d1)+" ?")
+        
+        #Create Question Label
+        self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+        self.questionLabel.pack(side="top")
+
+        #create variable to hold answer entry
+        self.answerEntryVar = tk.StringVar()
+
+        #create answer entry
+        self.answerentry = tk.Entry(self.questionFrame,textvariable=self.answerEntryVar)
+        self.answerentry.pack(side="bottom",anchor='s')
+
+    def getAnswer(self):
+        if str(self.answerEntryVar.get()) == self.answer:
+            return True
+        else:
+            return False
 class fractionQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -57,10 +97,10 @@ class fractionQuestion(QuestionBox):
     def createQuestion(self):#overload of base class create question method
         self.questionFrame.pack(expand="True")
 
-        self.n = random.randint(1,100)
-        self.d = random.randint(1,10)*random.randint(2,10)
+        self.n = random.randint(1,100)# numerator variable
+        self.d = random.randint(1,10)*random.randint(2,10)# denominator variable
 
-        temp = Fraction(self.n,self.d)
+        temp = Fraction(self.n,self.d) # temp holds the reduced fraction as a number variable
 
         self.answer = str(temp)# temp is converted to string and loaded to answer 
 
