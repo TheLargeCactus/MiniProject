@@ -18,6 +18,7 @@ from Timer import *
 from ProfileSelectPopup import *
 from CreateProfilePopup import *
 from Questions import *
+from Leaderboard import *
 
 #python version should be Python 3
 
@@ -43,6 +44,9 @@ class Application:
         #question container variable
         self.question = None
 
+        #leaderboard container variable
+        self.leaderboard = None
+
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -65,8 +69,11 @@ class Application:
         self.fileMenu.add_command(label="Delete Profile",command=self.deleteProfile) #Add delete profile command to submenu
         self.fileMenu.add_separator() #Add command Separator
         self.fileMenu.add_command(label="Save Profile", command=self.saveProfile) #add save profile command to submenu
-        self.fileMenu.add_command(label="Load Profile", command=self.loadProfile)#Add load profile command to menu
+        self.fileMenu.add_command(label="Open Profile", command=self.loadProfile)#Add load profile command to menu
+        self.fileMenu.add_command(label="Close Profile", command=self.closeProfile)
         self.fileMenu.add_separator() #add seperator line in submenu
+        self.fileMenu.add_command(label="Show Leaderboard",command=self.showLeaderboard)
+        self.fileMenu.add_separator()#Add seperator
         self.fileMenu.add_command(label="Quit", command=self.root.quit) #add quit command to submenu
         self.menuBar.add_cascade(label="File", menu=self.fileMenu) #place submenu with title File on menubar
 
@@ -202,6 +209,16 @@ class Application:
 
         return
 
+    def closeProfile(self):
+        #only do this if a profile is loaded
+        if self.profileLoaded:
+            self.saveProfile()#save currently loaded profile
+
+            self.profileNameVar.set("Profile: ")
+            self.profileAgeVar.set("Age: ")
+            self.profileScoreVar.set("Score: ")
+
+
     #function to delete profile
     def deleteProfile(self):
 
@@ -303,6 +320,21 @@ class Application:
 
         return
 
+    #function to display leaderboard
+    def showLeaderboard(self):
+        #destroy previous leaderboard if applicable
+        if self.leaderboard:
+            self.leaderboard.destroy()
+
+        #Execute SQL to get data from database
+        self.cursor.execute('Select profileName,profileAge,profileScore From Profile Order by profileScore DESC')
+
+        profileData = self.cursor.fetchall()
+
+        self.leaderboard = Leaderboard(self.root,profileData)
+        return
+
+    #function to cleaup questions
     def cleanup(self):
         self.question.destroy()
 
@@ -310,6 +342,8 @@ class Application:
     def end(self):
         self.saveProfile()
         self.root.destroy()
+
+
 
 app = Application() #start application
 
