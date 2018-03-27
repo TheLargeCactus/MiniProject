@@ -282,6 +282,9 @@ class Application:
                                        divisionQuestion(self.mainarea),
                                        AdditionQuestion(self.mainarea),
                                        rootQuestion(self.mainarea),
+                                       fractionDivision(self.mainarea),
+                                       fractionSubtraction(self.mainarea),
+                                       fractionMultiplication(self.mainarea),
                                        fractionAddition(self.mainarea)])
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock
