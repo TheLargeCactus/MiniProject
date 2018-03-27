@@ -66,9 +66,9 @@ class exponentQuestion(QuestionBox):
         self.questionString = tk.StringVar()
 
         if (self.y == 2):
-            self.questionString.set("Question: What is"+str(self.x)+" squared? ")
+            self.questionString.set("Question: What is "+str(self.x)+" squared? ")
         elif(self.y==3):
-            self.questionString.set("Question: What is"+str(self.x)+" cubed? ")
+            self.questionString.set("Question: What is "+str(self.x)+" cubed? ")
         else:
              self.questionString.set("Question: What is "+str(self.x)+" to the "+str(self.y)+ "th power?")
         
@@ -248,7 +248,7 @@ class fractionAddition(QuestionBox):
             return True
         else:
             return False
-class fractionQuestion(QuestionBox):
+class fractionReduce(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
         self.correctvalue = 30#set values for base class variables

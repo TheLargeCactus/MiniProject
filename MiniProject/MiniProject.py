@@ -277,7 +277,19 @@ class Application:
         #enable submit button
         self.submitquestionbutton['state'] = 'normal'
 
-        self.question = random.choice([exponentQuestion(self.mainarea)])
+        self.question = random.choice([AdditionQuestion(self.mainarea),
+                                       subtractQuestion(self.mainarea),
+                                       multiplicationQuestion(self.mainarea),
+                                       divisionQuestion(self.mainarea),
+                                       GCDivisorQuestion(self.mainarea),
+                                       rootQuestion(self.mainarea),
+                                       exponentQuestion(self.mainarea),
+                                       fractionReduce(self.mainarea),
+                                       fractionSubtraction(self.mainarea),
+                                       fractionAddition(self.mainarea),
+                                       fractionMultiplication(self.mainarea),
+                                       fractionDivision(self.mainarea),
+                                       SolveXQuestion(self.mainarea)])
 
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock
