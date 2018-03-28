@@ -47,13 +47,37 @@ class Application:
         #leaderboard container variable
         self.leaderboard = None
 
+        #variable to hold question categories
+        self.questionCategories = [ AdditionQuestion,
+                                    subtractQuestion,
+                                    multiplicationQuestion,
+                                    divisionQuestion,
+                                    GCDivisorQuestion,
+                                    rootQuestion,
+                                    exponentQuestion,
+                                    fractionReduce,
+                                    fractionSubtraction,
+                                    fractionAddition,
+                                    fractionMultiplication,
+                                    fractionDivision,
+                                    SolveXQuestion]
 
         self.createGUI()#function defined in this class to create GUI elements
 
         self.root.protocol('WM_DELETE_WINDOW', self.end)#Add protocol to call closing function on exit
+        self.root.bind('<Key>',self.keyhandler)#bind key events to keyhandler
 
         #Must be last statement in __init__
         self.root.mainloop()#starts the main loop of the GUI
+
+    #handles key events
+    def keyhandler(self,event):
+        if event.char == '\r' and self.submitquestionbutton['state'] == 'normal':
+            self.submitQuestion()
+
+        elif event.char == '\r' and self.nextquestionbutton['state'] == 'normal':
+            self.nextQuestion()
+
 
     def createGUI(self):
 
@@ -277,20 +301,10 @@ class Application:
         #enable submit button
         self.submitquestionbutton['state'] = 'normal'
 
-        self.question = random.choice([AdditionQuestion(self.mainarea),
-                                       subtractQuestion(self.mainarea),
-                                       multiplicationQuestion(self.mainarea),
-                                       divisionQuestion(self.mainarea),
-                                       GCDivisorQuestion(self.mainarea),
-                                       rootQuestion(self.mainarea),
-                                       exponentQuestion(self.mainarea),
-                                       fractionReduce(self.mainarea),
-                                       fractionSubtraction(self.mainarea),
-                                       fractionAddition(self.mainarea),
-                                       fractionMultiplication(self.mainarea),
-                                       fractionDivision(self.mainarea),
-                                       SolveXQuestion(self.mainarea)])
+        #choose question and create object
+        self.question = random.choice(self.questionCategories)(self.mainarea)
 
+        
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock
         self.timer.restartClock()
@@ -317,9 +331,6 @@ class Application:
             #if profileScore goes below 0, set profile score to 0
             if self.profileScore < 0:
                 self.profileScore = 0
-
-
-        #display correct or incorrect
 
         #update profile score variable
         self.profileScoreVar.set("Score: " +str(self.profileScore))

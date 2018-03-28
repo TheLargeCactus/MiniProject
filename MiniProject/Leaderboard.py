@@ -5,6 +5,7 @@ class Leaderboard(tk.Toplevel):
     def __init__(self,master,list):
         tk.Toplevel.__init__(self,master)
         self.master = master #set master
+        self.title("Leaderboard")
 
         self.leaderboardnamevar = tk.StringVar(value=[row[0] for row in list])
         self.leaderboardagevar = tk.StringVar(value=[row[1] for row in list])

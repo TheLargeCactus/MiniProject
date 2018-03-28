@@ -17,8 +17,6 @@ class QuestionBox:
         self.correctLabel = tk.Label(self.questionFrame,bg=self.master['bg'],font=(tk.font.nametofont("TkDefaultFont"), 16),text='')
         self.correctLabel.pack(side='bottom')
 
-        
-
     #function to cleanup question
     def destroy(self):
         self.questionFrame.destroy()
@@ -29,8 +27,6 @@ class QuestionBox:
             self.correctLabel.configure(fg="Green",text='Correct! +'+str(self.correctvalue))
         else:
             self.correctLabel.configure(fg="Red",text='Incorrect! -'+str(self.wrongvalue))
-
-        
         
     #Create Visual Elements related to question
     def createQuestion(self):
@@ -88,6 +84,7 @@ class exponentQuestion(QuestionBox):
             return True
         else:
             return False
+
 class fractionDivision(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -128,6 +125,7 @@ class fractionDivision(QuestionBox):
             return True
         else:
             return False
+
 class fractionMultiplication(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -168,6 +166,7 @@ class fractionMultiplication(QuestionBox):
             return True
         else:
             return False
+
 class fractionSubtraction(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -208,6 +207,7 @@ class fractionSubtraction(QuestionBox):
             return True
         else:
             return False
+
 class fractionAddition(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -248,6 +248,7 @@ class fractionAddition(QuestionBox):
             return True
         else:
             return False
+
 class fractionReduce(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
@@ -285,6 +286,7 @@ class fractionReduce(QuestionBox):
             return True
         else:
             return False
+
 class rootQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)
