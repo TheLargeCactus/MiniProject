@@ -5,6 +5,7 @@ from tkinter import messagebox
 from tkinter import Toplevel
 from tkinter import font
 from fractions import gcd
+from tkinter import ttk
 
 #import other python libraries
 import math
@@ -47,20 +48,24 @@ class Application:
         #leaderboard container variable
         self.leaderboard = None
 
-        #variable to hold question categories
-        self.questionCategories = [ AdditionQuestion,
-                                    subtractQuestion,
-                                    multiplicationQuestion,
-                                    divisionQuestion,
-                                    GCDivisorQuestion,
-                                    rootQuestion,
-                                    exponentQuestion,
-                                    fractionReduce,
-                                    fractionSubtraction,
-                                    fractionAddition,
-                                    fractionMultiplication,
-                                    fractionDivision,
-                                    SolveXQuestion]
+        #create questionCategory dictionary
+        self.questionCategories = {}
+
+        #set question options
+        #format is self.questionCategories['QUESTION_NAME'] = QUESTION_CLASS
+        self.questionCategories['Addition'] = AdditionQuestion
+        self.questionCategories['Subtraction'] = subtractQuestion
+        self.questionCategories['Multiplication'] = multiplicationQuestion
+        self.questionCategories['Division'] = divisionQuestion
+        self.questionCategories['Greatest Common Factor'] = GCDivisorQuestion
+        self.questionCategories['Root Constant'] = rootQuestion
+        self.questionCategories['Exponent Constant'] = exponentQuestion
+        self.questionCategories['Fraction Reduction'] = fractionReduce
+        self.questionCategories['Fraction Addition'] = fractionAddition
+        self.questionCategories['Fraction Subtraction'] = fractionSubtraction
+        self.questionCategories['Fraction Multiplication'] = fractionMultiplication
+        self.questionCategories['Fraction Division'] = fractionDivision
+        self.questionCategories['Solve for X'] = SolveXQuestion
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -105,15 +110,15 @@ class Application:
         self.root.config(menu=self.menuBar) #update menu on root window
 
         #create sidebar section
-        self.sidebar = tk.Frame(self.root, bg='#6C5B7B', height=500)
+        self.sidebar = tk.Frame(self.root, bg='#355C7D', height=500)
         self.sidebar.pack(expand=False,fill='both', side='left', anchor='w')
 
         #Add Profile name to sidebar
-        self.sidebarProfileLabel = tk.Label(self.sidebar,textvariable=self.profileNameVar,bg=self.sidebar['bg'])
-        self.sidebarProfileLabel.pack(side="top",fill='both',anchor='w')
+        self.sidebarProfileLabel = tk.Label(self.sidebar,textvariable=self.profileNameVar,bg=self.sidebar['bg'],fg='white')
+        self.sidebarProfileLabel.pack(side="top",anchor='w')
 
         #Add profile age to sidebar
-        self.sidebarAgeLabel = tk.Label(self.sidebar,textvariable=self.profileAgeVar,bg=self.sidebar['bg'])
+        self.sidebarAgeLabel = tk.Label(self.sidebar,textvariable=self.profileAgeVar,bg=self.sidebar['bg'],fg='white')
         self.sidebarAgeLabel.pack(side="top",anchor='w')
 
         #create main area for question section
@@ -144,6 +149,16 @@ class Application:
         self.submitquestionbutton = tk.Button(self.bottombar,text='Submit Question',command=self.submitQuestion,state='disabled')
         self.submitquestionbutton.pack(side="right")
 
+        #Create Question Category Checkbox Dictionary
+        self.questionCheckbox = {}
+
+        #Create Question Category Check Buttons
+        for key in self.questionCategories:
+            temp = tk.IntVar()
+            self.questionCheckbox[key] = tk.Checkbutton(self.sidebar,text=key,activebackground=self.sidebar['bg'],selectcolor=self.sidebar['bg'],bg=self.sidebar['bg'],highlightcolor=self.sidebar['bg'],fg='white',activeforeground='white',onvalue=1,offvalue=0,variable=temp)
+            self.questionCheckbox[key].var = temp
+            self.questionCheckbox[key].pack(side='bottom', anchor='w')
+            self.questionCheckbox[key].select()
 
     #function prompts a user to create a profile, giving an error if the profile exists
     def createProfile(self):
@@ -302,8 +317,7 @@ class Application:
         self.submitquestionbutton['state'] = 'normal'
 
         #choose question and create object
-        self.question = random.choice(self.questionCategories)(self.mainarea)
-
+        self.question = random.choice([self.questionCategories[key] for key in self.questionCheckbox if self.questionCheckbox[key].var.get()])(self.mainarea)
         
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock
