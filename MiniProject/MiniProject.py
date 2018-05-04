@@ -22,6 +22,7 @@ from Questions import *
 from Leaderboard import *
 
 #python version should be Python 3
+#mini project version
 
 class Application:
     def __init__(self):
