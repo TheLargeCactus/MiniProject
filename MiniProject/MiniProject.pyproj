@@ -24,7 +24,13 @@
     <Compile Include="CreateProfilePopup.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="KirstenBrandon\test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Leaderboard.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MichaelDavid\test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ProfileSelectPopup.py">
