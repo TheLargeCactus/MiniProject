@@ -54,6 +54,7 @@ class Application:
 
         #set question options
         #format is self.questionCategories['QUESTION_NAME'] = QUESTION_CLASS
+        #QUESTION_NAME is how the name will appear in the list, so make it look nice
         self.questionCategories['Addition'] = AdditionQuestion
         self.questionCategories['Subtraction'] = subtractQuestion
         self.questionCategories['Multiplication'] = multiplicationQuestion
