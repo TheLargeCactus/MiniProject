@@ -27,11 +27,11 @@ class MADLIBS():
     def start(self):
         print
         print  ("****     ****     **     *******         **       ** ******    ********")
-		    print  ("/**/**   **/**    ****   /**////**       /**      /**/*////**  **////// ")
-		    print  ("/**//** ** /**   **//**  /**    /**      /**      /**/*   /** /**       ")
-		    print  ("/** //***  /**  **  //** /**    /**      /**      /**/******  /*********")
-		    print  ("/**  //*   /** **********/**    /**      /**      /**/*//// **////////**")
-		    print  ("/**   /    /**/**//////**/**    **       /**      /**/*    /**       /**")
+	print  ("/**/**   **/**    ****   /**////**       /**      /**/*////**  **////// ")
+	print  ("/**//** ** /**   **//**  /**    /**      /**      /**/*   /** /**       ")
+	print  ("/** //***  /**  **  //** /**    /**      /**      /**/******  /*********")
+	print  ("/**  //*   /** **********/**    /**      /**      /**/*//// **////////**")
+	print  ("/**   /    /**/**//////**/**    **       /**      /**/*    /**       /**")
         print  ("/**        /**/**     /**/*******        /********/**/*******  ******** ")
         print  ("//         // //      // ///////         //////// // ///////  ////////  ")
         print  
@@ -71,7 +71,7 @@ class MADLIBS():
         print ("Please provide me with each of the follow...\n")                    # Instructs the user to provide information
 
         adj = raw_input("Please enter an adjective. ")                              # Instructs the user to enter an adjective
-		    adj = adjective(adj)
+	adj = adjective(adj)
 
         #from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
         #dictionary = PyDictionary()                                                 # Creates a variable containing the library
@@ -88,12 +88,12 @@ class MADLIBS():
                 #print ("\n")                
 
         adj1 = raw_input("please enter another adjective. ")
-		    adj1 = adjective(adj1)
+	adj1 = adjective(adj1)
         #meaning = dictionary.meaning(adj1)
         #stop = False
         #while stop == False:
-			      #if "Adjective" in meaning:
-				        #stop = True
+		#if "Adjective" in meaning:
+			#stop = True
             #else:
                 #print ("\n \n The word you enter is not the correct part of speech. Here is the meaning of the word you entered. \n")
                 #print (meaning, "\n")
@@ -102,7 +102,7 @@ class MADLIBS():
                 #print ("\n")
 
         noun = raw_input("Please enter a noun ")
-		    noun = checkNoun(noun)
+	noun = checkNoun(noun)
         #meaning = dictionary.meaning(noun)
         #print (noun," ", meaning)
         #stop = False
