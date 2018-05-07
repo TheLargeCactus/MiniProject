@@ -124,11 +124,11 @@ class Application:
         self.sidebarAgeLabel.pack(side="top",anchor='w')
 
         #create main area for question section
-        self.mainarea = tk.Frame(self.root, width=350, bg='#F8B195', height=470)
+        self.mainarea = tk.Frame(self.root, width=350, bg='#CCFBFC', height=470)
         self.mainarea.pack(expand=True, fill='both', side='top',anchor='e')
 
         #create bottom bar section
-        self.bottombar = tk.Frame(self.root, width=500, bg='#C06C84', height=50)
+        self.bottombar = tk.Frame(self.root, width=500, bg='#47c2c5', height=50)
         self.bottombar.pack(expand=False, fill='both', side='bottom',anchor='w')
 
         #create subframe to hold some visual elements
