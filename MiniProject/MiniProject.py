@@ -89,7 +89,7 @@ class Application:
     def createGUI(self):
 
         #set window options
-        self.root.title("MentalMath | Jose Gonzalez | Stephen Wratten") #set window title
+        self.root.title("Project Fly with Learning") #set window title
         self.root.minsize(width=500,height=500) #set minimum window size
 
         #create menubar section
