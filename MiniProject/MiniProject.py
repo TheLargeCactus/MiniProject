@@ -108,6 +108,22 @@ class Application:
         self.fileMenu.add_command(label="Quit", command=self.root.quit) #add quit command to submenu
         self.menuBar.add_cascade(label="File", menu=self.fileMenu) #place submenu with title File on menubar
 
+        self.QuestionTypesMenu = tk.Menu(self.menuBar,tearoff=0) # Create question types menu bar
+
+        #Create Question Category Checkbox Dictionary
+        self.questionCheckbox = {}
+
+        #Create Question Category Check Button menu options
+        for key in self.questionCategories:
+            temp = tk.IntVar()
+            temp.set(1)
+            self.QuestionTypesMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
+            #self.questionCheckbox[key] = tk.Checkbutton(self.sidebar,text=key,activebackground=self.sidebar['bg'],selectcolor=self.sidebar['bg'],bg=self.sidebar['bg'],highlightcolor=self.sidebar['bg'],fg='white',activeforeground='white',onvalue=1,offvalue=0,variable=temp)
+            self.questionCheckbox[key] = temp
+            #self.questionCheckbox[key].pack(side='bottom', anchor='w')
+            #self.questionCheckbox[key].select()
+
+        self.menuBar.add_cascade(label="Questions", menu=self.QuestionTypesMenu)#Add question menu to menu bar
 
         self.root.config(menu=self.menuBar) #update menu on root window
 
@@ -151,16 +167,9 @@ class Application:
         self.submitquestionbutton = tk.Button(self.bottombar,text='Submit Question',command=self.submitQuestion,state='disabled')
         self.submitquestionbutton.pack(side="right")
 
-        #Create Question Category Checkbox Dictionary
-        self.questionCheckbox = {}
+        
 
-        #Create Question Category Check Buttons
-        for key in self.questionCategories:
-            temp = tk.IntVar()
-            self.questionCheckbox[key] = tk.Checkbutton(self.sidebar,text=key,activebackground=self.sidebar['bg'],selectcolor=self.sidebar['bg'],bg=self.sidebar['bg'],highlightcolor=self.sidebar['bg'],fg='white',activeforeground='white',onvalue=1,offvalue=0,variable=temp)
-            self.questionCheckbox[key].var = temp
-            self.questionCheckbox[key].pack(side='bottom', anchor='w')
-            self.questionCheckbox[key].select()
+        
 
     #function prompts a user to create a profile, giving an error if the profile exists
     def createProfile(self):
@@ -319,7 +328,7 @@ class Application:
         self.submitquestionbutton['state'] = 'normal'
 
         #choose question and create object
-        self.question = random.choice([self.questionCategories[key] for key in self.questionCheckbox if self.questionCheckbox[key].var.get()])(self.mainarea)
+        self.question = random.choice([self.questionCategories[key] for key in self.questionCheckbox if self.questionCheckbox[key].get()])(self.mainarea)
         
         self.question.createQuestion()#Place Question on screen
         self.timer.resetClock()#start clock

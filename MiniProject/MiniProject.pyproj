@@ -30,9 +30,17 @@
     <Compile Include="Leaderboard.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MichaelDavid\CorrectDisplay.py" />
+    <Compile Include="MichaelDavid\EndLevelScreen.py" />
+    <Compile Include="MichaelDavid\Picture.py" />
+    <Compile Include="MichaelDavid\Planet.py" />
+    <Compile Include="MichaelDavid\Question.py" />
+    <Compile Include="MichaelDavid\QuestionDisplayer.py" />
     <Compile Include="MichaelDavid\test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MichaelDavid\Trivia.py" />
+    <Compile Include="MichaelDavid\WrongDisplay.py" />
     <Compile Include="ProfileSelectPopup.py">
       <SubType>Code</SubType>
     </Compile>
@@ -45,6 +53,9 @@
   <ItemGroup>
     <Folder Include="KirstenBrandon\" />
     <Folder Include="MichaelDavid\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="profiles.db" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

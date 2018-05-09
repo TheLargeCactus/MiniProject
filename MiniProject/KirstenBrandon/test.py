@@ -13,7 +13,8 @@ import tkinter as tk
 #from PIL import ImageTK
 from tkinter import *
 #from PIL import ImageTk, Image
-import os from PyDictionary import PyDictionary
+import os 
+from PyDictionary import PyDictionary
 dictionary = PyDictionary()
 go = ""
 class MADLIBS():
@@ -27,11 +28,11 @@ class MADLIBS():
     def start(self):
         print
         print  ("****     ****     **     *******         **       ** ******    ********")
-	print  ("/**/**   **/**    ****   /**////**       /**      /**/*////**  **////// ")
-	print  ("/**//** ** /**   **//**  /**    /**      /**      /**/*   /** /**       ")
-	print  ("/** //***  /**  **  //** /**    /**      /**      /**/******  /*********")
-	print  ("/**  //*   /** **********/**    /**      /**      /**/*//// **////////**")
-	print  ("/**   /    /**/**//////**/**    **       /**      /**/*    /**       /**")
+        print  ("/**/**   **/**    ****   /**////**       /**      /**/*////**  **////// ")
+        print  ("/**//** ** /**   **//**  /**    /**      /**      /**/*   /** /**       ")
+        print  ("/** //***  /**  **  //** /**    /**      /**      /**/******  /*********")
+        print  ("/**  //*   /** **********/**    /**      /**      /**/*//// **////////**")
+        print  ("/**   /    /**/**//////**/**    **       /**      /**/*    /**       /**")
         print  ("/**        /**/**     /**/*******        /********/**/*******  ******** ")
         print  ("//         // //      // ///////         //////// // ///////  ////////  ")
         print  
@@ -44,13 +45,13 @@ class MADLIBS():
         print 
         print ("Hello %s, lets get started...\n" % name)
         return self.game_select(name)
-	
+
     def game_select(self, name):
         games = ["baseball", "weird day", "star wars"]
         print ("The libs that are available...\n")
         for game in games:
-			print (game)
-        print
+            print (game)
+            print
         selected = raw_input("Which game would you like to play? ").lower()
         if selected in games:
             if selected == "baseball":
@@ -71,7 +72,7 @@ class MADLIBS():
         print ("Please provide me with each of the follow...\n")                    # Instructs the user to provide information
 
         adj = raw_input("Please enter an adjective. ")                              # Instructs the user to enter an adjective
-	adj = adjective(adj)
+        adj = adjective(adj)
 
         #from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
         #dictionary = PyDictionary()                                                 # Creates a variable containing the library
@@ -88,12 +89,12 @@ class MADLIBS():
                 #print ("\n")                
 
         adj1 = raw_input("please enter another adjective. ")
-	adj1 = adjective(adj1)
+        adj1 = adjective(adj1)
         #meaning = dictionary.meaning(adj1)
         #stop = False
         #while stop == False:
-		#if "Adjective" in meaning:
-			#stop = True
+        #if "Adjective" in meaning:
+            #stop = True
             #else:
                 #print ("\n \n The word you enter is not the correct part of speech. Here is the meaning of the word you entered. \n")
                 #print (meaning, "\n")
@@ -102,7 +103,7 @@ class MADLIBS():
                 #print ("\n")
 
         noun = raw_input("Please enter a noun ")
-	noun = checkNoun(noun)
+        noun = checkNoun(noun)
         #meaning = dictionary.meaning(noun)
         #print (noun," ", meaning)
         #stop = False
@@ -224,20 +225,20 @@ class MADLIBS():
     def ml_weird_day(self, name):
         print ("Please provide me with each of the follow...\n")
         noun1 = raw_input("A noun: ")
-		    noun1 = checkNoun(noun1)
+        noun1 = checkNoun(noun1)
 
         adj1 = raw_input("An adjective: ")
-		    adj1 = adjective(adj1)
+        adj1 = adjective(adj1)
 
         noun2 = raw_input("A plural noun: ")
-		    noun2 = checkNoun(noun2)
+        noun2 = checkNoun(noun2)
 
         famous = raw_input("The name of a famous person: ")
         place = raw_input("A place: ")
         verbing1 = raw_input("A verb ending in 'ing': ")
 
         adj2 = raw_input("Another adjective: ")
-		    adj2 = adjective(adj2)
+        adj2 = adjective(adj2)
 
         song = raw_input("Your favorite song: ")
         verbed = raw_input("A verb ending in 'ed': ")
@@ -246,17 +247,17 @@ class MADLIBS():
         model = raw_input("The name of a supermodel: ")
 
         adj3 = raw_input("One final adjective: ")
-		    adj3 = adjective(adj3)
+        adj3 = adjective(adj3)
 
         STORY = "Once upon a time there was a %s. It had %s %s! One day it met %s on the side of the %s they were %s. It was very %s; they both looked like hobos! All of the sudden they started singing %s really loudly. They %s really %s! %s started %s with %s. They looked really %s!"
         print
         print (STORY % (noun1, adj1, noun2, famous, place, verbing1, adj2, song, verbed, adverb, famous, verbing2, model, adj3))
 
-	def adjective(word):
-		from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
+    def adjective(word):
+        from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
         dictionary = PyDictionary()                                             # Creates a variable containing the library
         word = dictionary.meaning(adj)                                          # Creates a variable that holds the meaning of the user entered word
-		stop = False                                                                # Variable that holds a false value for while loops
+        stop = False                                                                # Variable that holds a false value for while loops
         while stop == False:                                                    # While to make sure that the user enters the correct part of speech
             if "Adjective" in word:
                 stop = True
@@ -266,13 +267,13 @@ class MADLIBS():
                 adj = raw_input("Please try another word. ")
                 word = dictionary.meaning(adj)
                 print ("\n")
-		return word
+        return word
 
-	def checkNoun(word):
-		from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
+    def checkNoun(word):
+        from PyDictionary import PyDictionary                                       # Imports a dictionary form the python libraries   
         dictionary = PyDictionary()                                             # Creates a variable containing the library
         word = dictionary.meaning(noun)                                         # Creates a variable that holds the meaning of the user entered word
-		stop = False                                                                # Variable that holds a false value for while loops
+        stop = False                                                                # Variable that holds a false value for while loops
         while stop == False:                                                    # While to make sure that the user enters the correct part of speech
             if "Noun" in word:
                 stop = True
@@ -282,7 +283,7 @@ class MADLIBS():
                 adj = raw_input("Please try another word. ")
                 word = dictionary.meaning(adj)
                 print ("\n")
-		return word
+        return word
 
 if __name__ == "__main__":
 
