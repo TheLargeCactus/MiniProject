@@ -123,7 +123,7 @@ class Application:
             #self.questionCheckbox[key].pack(side='bottom', anchor='w')
             #self.questionCheckbox[key].select()
 
-        self.menuBar.add_cascade(label="Questions", menu=self.QuestionTypesMenu)#Add question menu to menu bar
+        self.menuBar.add_cascade(label="Math", menu=self.QuestionTypesMenu)#Add question menu to menu bar
 
         self.root.config(menu=self.menuBar) #update menu on root window
 
