@@ -103,13 +103,12 @@ mars = Planet( questions[30], questions[31], questions[32], questions[33], quest
 #uranus = Planet( questions[60], questions[61], questions[62], questions[63], questions[64], questions[65], questions[66],  questions[67], questions[68], questions[69])
 #neptune = Planet( questions[70], questions[71], questions[72], questions[73], questions[74], questions[75], questions[76],  questions[77], questions[78], questions[79])
 
-#Commented these out for now
-#y = 0
-#x = 0
-#mercury.displayAllQuestions("Mercury", "Venus")
-#venus.displayAllQuestions("Venus", "Earth")
-#earth.displayAllQuestions("Earth", "Mars")
-#mars.displayAllQuestions("Mars", "Jupiter")
+y = 0
+x = 0
+mercury.displayAllQuestions("Mercury", "Venus")
+venus.displayAllQuestions("Venus", "Earth")
+earth.displayAllQuestions("Earth", "Mars")
+mars.displayAllQuestions("Mars", "Jupiter")
 #jupiter.displayAllQuestions("Jupiter", "Saturn")
 #saturn.displayAllQuestions("Saturn", "Uranus")
 #uranus.displayAllQuestions("Uranus", "Neptune")

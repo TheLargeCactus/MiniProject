@@ -41,17 +41,14 @@
     </Compile>
     <Compile Include="MichaelDavid\Trivia.py" />
     <Compile Include="MichaelDavid\WrongDisplay.py" />
-    <Compile Include="Planet.py" />
     <Compile Include="ProfileSelectPopup.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MiniProject.py" />
-    <Compile Include="Question.py" />
     <Compile Include="Questions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Timer.py" />
-    <Compile Include="Trivia.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="KirstenBrandon\" />
