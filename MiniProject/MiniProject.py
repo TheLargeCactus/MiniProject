@@ -74,6 +74,9 @@ class Application:
         self.questionCategories['Fraction Division'] = fractionDivision
         self.questionCategories['Solve for X'] = SolveXQuestion
         self.questionCategories['Mercury Question'] = MercuryQuestion
+        self.questionCategories['Venus Question'] = VenusQuestion
+        self.questionCategories['Earth Question'] = EarthQuestion
+        self.questionCategories['Mars Question'] = MarsQuestion
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -96,7 +99,7 @@ class Application:
 
         #set window options
         self.root.title("Project Fly with Learning") #set window title
-        self.root.minsize(width=500,height=500) #set minimum window size
+        self.root.minsize(width=800,height=600) #set minimum window size
 
         #create menubar section
         self.menuBar = tk.Menu(self.root,bg='#355C7D')#create menu bar object

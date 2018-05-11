@@ -620,3 +620,171 @@ class MercuryQuestion(QuestionBox):
             return True
         else:
             return False
+
+class VenusQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)#initialize base class
+
+        self.correctvalue = 20#set values for base class variables
+        self.wrongvalue = 10 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+
+    def createQuestion(self):#overload of base class create question method
+       self.questionFrame.pack(expand="True")
+       
+
+       #Get Random Mercury Question
+       self.planetQuestion = random.choice(venus.questions)
+       
+
+       #answer is available in self.planetQuestion.answer
+
+       #Prompt Question
+       self.questionString = tk.StringVar()
+       self.questionString.set(self.planetQuestion.prompt)
+       self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+       self.questionLabel.pack(side="top")
+
+       #create list of possible answers
+       self.possibleAnswers = [self.planetQuestion.incorrect0,self.planetQuestion.incorrect1,self.planetQuestion.incorrect2,self.planetQuestion.answer] 
+
+       #variable to hold currently selected radio button answer
+       self.radioButtonAnswer = tk.StringVar()
+
+       #mini frame to left justify 
+
+       #create radio buttons with possible answers
+       index = 0
+       self.answerRadioButton = {}
+       while len(self.possibleAnswers):
+           #use temp variable to store one of random answers
+           temp = random.choice(self.possibleAnswers)
+
+           #create radio button for chosen answer
+           self.answerRadioButton[index] = tk.Radiobutton(self.questionFrame,text=temp,value=temp,variable=self.radioButtonAnswer,bg=self.questionFrame['bg'],activebackground=self.questionFrame['bg'])
+           self.answerRadioButton[index].pack(side="top",anchor='w')
+           index += 1
+
+           #remove value from list so it cant be randomly picked again
+           self.possibleAnswers = [a for a in self.possibleAnswers if a != temp]
+
+       #Set selected answer to first option
+       self.radioButtonAnswer.set(self.answerRadioButton[0]['text'])
+
+    #Question to verify answer
+    def getAnswer(self):
+        if self.radioButtonAnswer.get() == self.planetQuestion.answer:
+            return True
+        else:
+            return False
+
+class EarthQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)#initialize base class
+
+        self.correctvalue = 20#set values for base class variables
+        self.wrongvalue = 10 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+
+    def createQuestion(self):#overload of base class create question method
+       self.questionFrame.pack(expand="True")
+       
+
+       #Get Random Mercury Question
+       self.planetQuestion = random.choice(earth.questions)
+       
+
+       #answer is available in self.planetQuestion.answer
+
+       #Prompt Question
+       self.questionString = tk.StringVar()
+       self.questionString.set(self.planetQuestion.prompt)
+       self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+       self.questionLabel.pack(side="top")
+
+       #create list of possible answers
+       self.possibleAnswers = [self.planetQuestion.incorrect0,self.planetQuestion.incorrect1,self.planetQuestion.incorrect2,self.planetQuestion.answer] 
+
+       #variable to hold currently selected radio button answer
+       self.radioButtonAnswer = tk.StringVar()
+
+       #mini frame to left justify 
+
+       #create radio buttons with possible answers
+       index = 0
+       self.answerRadioButton = {}
+       while len(self.possibleAnswers):
+           #use temp variable to store one of random answers
+           temp = random.choice(self.possibleAnswers)
+
+           #create radio button for chosen answer
+           self.answerRadioButton[index] = tk.Radiobutton(self.questionFrame,text=temp,value=temp,variable=self.radioButtonAnswer,bg=self.questionFrame['bg'],activebackground=self.questionFrame['bg'])
+           self.answerRadioButton[index].pack(side="top",anchor='w')
+           index += 1
+
+           #remove value from list so it cant be randomly picked again
+           self.possibleAnswers = [a for a in self.possibleAnswers if a != temp]
+
+       #Set selected answer to first option
+       self.radioButtonAnswer.set(self.answerRadioButton[0]['text'])
+
+    #Question to verify answer
+    def getAnswer(self):
+        if self.radioButtonAnswer.get() == self.planetQuestion.answer:
+            return True
+        else:
+            return False
+
+class MarsQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)#initialize base class
+
+        self.correctvalue = 20#set values for base class variables
+        self.wrongvalue = 10 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+
+    def createQuestion(self):#overload of base class create question method
+       self.questionFrame.pack(expand="True")
+       
+
+       #Get Random Mercury Question
+       self.planetQuestion = random.choice(mars.questions)
+       
+
+       #answer is available in self.planetQuestion.answer
+
+       #Prompt Question
+       self.questionString = tk.StringVar()
+       self.questionString.set(self.planetQuestion.prompt)
+       self.questionLabel = tk.Label(self.questionFrame,textvariable=self.questionString,bg=self.master['bg'])
+       self.questionLabel.pack(side="top")
+
+       #create list of possible answers
+       self.possibleAnswers = [self.planetQuestion.incorrect0,self.planetQuestion.incorrect1,self.planetQuestion.incorrect2,self.planetQuestion.answer] 
+
+       #variable to hold currently selected radio button answer
+       self.radioButtonAnswer = tk.StringVar()
+
+       #mini frame to left justify 
+
+       #create radio buttons with possible answers
+       index = 0
+       self.answerRadioButton = {}
+       while len(self.possibleAnswers):
+           #use temp variable to store one of random answers
+           temp = random.choice(self.possibleAnswers)
+
+           #create radio button for chosen answer
+           self.answerRadioButton[index] = tk.Radiobutton(self.questionFrame,text=temp,value=temp,variable=self.radioButtonAnswer,bg=self.questionFrame['bg'],activebackground=self.questionFrame['bg'])
+           self.answerRadioButton[index].pack(side="top",anchor='w')
+           index += 1
+
+           #remove value from list so it cant be randomly picked again
+           self.possibleAnswers = [a for a in self.possibleAnswers if a != temp]
+
+       #Set selected answer to first option
+       self.radioButtonAnswer.set(self.answerRadioButton[0]['text'])
+
+    #Question to verify answer
+    def getAnswer(self):
+        if self.radioButtonAnswer.get() == self.planetQuestion.answer:
+            return True
+        else:
+            return False
