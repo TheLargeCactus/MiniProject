@@ -73,6 +73,10 @@ class Application:
         self.questionCategories['Fraction Multiplication'] = fractionMultiplication
         self.questionCategories['Fraction Division'] = fractionDivision
         self.questionCategories['Solve for X'] = SolveXQuestion
+        self.questionCategories['Mercury Question'] = MercuryQuestion
+        self.questionCategories['Venus Question'] = VenusQuestion
+        self.questionCategories['Earth Question'] = EarthQuestion
+        self.questionCategories['Mars Question'] = MarsQuestion
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -95,7 +99,7 @@ class Application:
 
         #set window options
         self.root.title("Project Fly with Learning") #set window title
-        self.root.minsize(width=500,height=500) #set minimum window size
+        self.root.minsize(width=800,height=600) #set minimum window size
 
         #create menubar section
         self.menuBar = tk.Menu(self.root,bg='#355C7D')#create menu bar object
@@ -128,7 +132,7 @@ class Application:
             #self.questionCheckbox[key].pack(side='bottom', anchor='w')
             #self.questionCheckbox[key].select()
 
-        self.menuBar.add_cascade(label="Math", menu=self.QuestionTypesMenu)#Add question menu to menu bar
+        self.menuBar.add_cascade(label="Question Types", menu=self.QuestionTypesMenu)#Add question menu to menu bar
 
         self.root.config(menu=self.menuBar) #update menu on root window
 
@@ -269,7 +273,11 @@ class Application:
         if self.profileLoaded:
             self.saveProfile()#save currently loaded profile
             self.profileName = "Unloaded"
+<<<<<<< HEAD
             self.profileNameVar.set("Profile: "+self.profileName)
+=======
+            self.profileNameVar.set("Profile: " + self.profileName)
+>>>>>>> PrototypeMergingPlanetQuestions
             self.profileAgeVar.set("Age: ")
             self.profileScoreVar.set("Score: ")
             self.profileLoaded = False
