@@ -34,7 +34,7 @@ class Application:
         self.root = tk.Tk()#object used to create window
         
         #Profile variables
-        self.profileName = ""
+        self.profileName = "Unloaded"
         self.profileNameVar = tk.StringVar()
         self.profileNameVar.set("Profile: "+self.profileName) #profile Name
         self.profileAge = 0   #Age of profile user
@@ -268,10 +268,11 @@ class Application:
         #only do this if a profile is loaded
         if self.profileLoaded:
             self.saveProfile()#save currently loaded profile
-
-            self.profileNameVar.set("Profile: ")
+            self.profileName = "Unloaded"
+            self.profileNameVar.set("Profile: "+self.profileName)
             self.profileAgeVar.set("Age: ")
             self.profileScoreVar.set("Score: ")
+            self.profileLoaded = False
 
 
     #function to delete profile
