@@ -73,6 +73,7 @@ class Application:
         self.questionCategories['Fraction Multiplication'] = fractionMultiplication
         self.questionCategories['Fraction Division'] = fractionDivision
         self.questionCategories['Solve for X'] = SolveXQuestion
+        self.questionCategories['Mercury Question'] = MercuryQuestion
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -128,7 +129,7 @@ class Application:
             #self.questionCheckbox[key].pack(side='bottom', anchor='w')
             #self.questionCheckbox[key].select()
 
-        self.menuBar.add_cascade(label="Math", menu=self.QuestionTypesMenu)#Add question menu to menu bar
+        self.menuBar.add_cascade(label="Question Types", menu=self.QuestionTypesMenu)#Add question menu to menu bar
 
         self.root.config(menu=self.menuBar) #update menu on root window
 

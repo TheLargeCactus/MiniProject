@@ -2,10 +2,9 @@ import tkinter as tk
 import random
 import sys
 
-from QuestionDisplayer import QuestionDisplayer
-from CorrectDisplay import CorrectDisplay
-from WrongDisplay import WrongDisplay
-from EndLevelScreen import EndLevelScreen
+#from CorrectDisplay import CorrectDisplay
+#from WrongDisplay import WrongDisplay
+#from EndLevelScreen import EndLevelScreen
 from Question import Question
 
 class Planet:
