@@ -273,11 +273,7 @@ class Application:
         if self.profileLoaded:
             self.saveProfile()#save currently loaded profile
             self.profileName = "Unloaded"
-<<<<<<< HEAD
             self.profileNameVar.set("Profile: "+self.profileName)
-=======
-            self.profileNameVar.set("Profile: " + self.profileName)
->>>>>>> PrototypeMergingPlanetQuestions
             self.profileAgeVar.set("Age: ")
             self.profileScoreVar.set("Score: ")
             self.profileLoaded = False
