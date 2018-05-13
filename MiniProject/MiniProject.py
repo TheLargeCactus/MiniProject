@@ -58,25 +58,45 @@ class Application:
         self.questionCategories = {}
 
         #set question options
-        #format is self.questionCategories['QUESTION_NAME'] = QUESTION_CLASS
+        #format is 
+        #self.questionCategories['QUESTION_NAME'] = QUESTION_CLASS
+        #self.questionCategories['QUESTION_NAME'].type = Type.TYPE_NAME   
         #QUESTION_NAME is how the name will appear in the list, so make it look nice
+        #TYPE_NAME is a type defined in class Type
         self.questionCategories['Addition'] = AdditionQuestion
+        self.questionCategories['Addition'].type = Type.Math
         self.questionCategories['Subtraction'] = subtractQuestion
+        self.questionCategories['Subtraction'].type = Type.Math
         self.questionCategories['Multiplication'] = multiplicationQuestion
+        self.questionCategories['Multiplication'].type = Type.Math
         self.questionCategories['Division'] = divisionQuestion
+        self.questionCategories['Division'].type = Type.Math
         self.questionCategories['Greatest Common Factor'] = GCDivisorQuestion
+        self.questionCategories['Greatest Common Factor'].type = Type.Math
         self.questionCategories['Root Constant'] = rootQuestion
+        self.questionCategories['Root Constant'].type = Type.Math
         self.questionCategories['Exponent Constant'] = exponentQuestion
+        self.questionCategories['Exponent Constant'].type = Type.Math
         self.questionCategories['Fraction Reduction'] = fractionReduce
+        self.questionCategories['Fraction Reduction'].type = Type.Math
         self.questionCategories['Fraction Addition'] = fractionAddition
+        self.questionCategories['Fraction Addition'].type = Type.Math
         self.questionCategories['Fraction Subtraction'] = fractionSubtraction
+        self.questionCategories['Fraction Subtraction'].type = Type.Math
         self.questionCategories['Fraction Multiplication'] = fractionMultiplication
+        self.questionCategories['Fraction Multiplication'].type = Type.Math
         self.questionCategories['Fraction Division'] = fractionDivision
+        self.questionCategories['Fraction Division'].type = Type.Math
         self.questionCategories['Solve for X'] = SolveXQuestion
+        self.questionCategories['Solve for X'].type = Type.Math
         self.questionCategories['Mercury Question'] = MercuryQuestion
+        self.questionCategories['Mercury Question'].type = Type.Science
         self.questionCategories['Venus Question'] = VenusQuestion
+        self.questionCategories['Venus Question'].type = Type.Science
         self.questionCategories['Earth Question'] = EarthQuestion
+        self.questionCategories['Earth Question'].type = Type.Science
         self.questionCategories['Mars Question'] = MarsQuestion
+        self.questionCategories['Mars Question'].type = Type.Science
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -118,6 +138,9 @@ class Application:
         self.menuBar.add_cascade(label="File", menu=self.fileMenu) #place submenu with title File on menubar
 
         self.QuestionTypesMenu = tk.Menu(self.menuBar,tearoff=0) # Create question types menu bar
+        self.mathQuestionMenu = tk.Menu(self.QuestionTypesMenu,tearoff=0)
+        self.scienceQuestionMenu = tk.Menu(self.QuestionTypesMenu,tearoff=0)
+        self.libsQuestionMenu = tk.Menu(self.QuestionTypesMenu,tearoff=0)
 
         #Create Question Category Checkbox Dictionary
         self.questionCheckbox = {}
@@ -126,13 +149,24 @@ class Application:
         for key in self.questionCategories:
             temp = tk.IntVar()
             temp.set(1)
-            self.QuestionTypesMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
-            #self.questionCheckbox[key] = tk.Checkbutton(self.sidebar,text=key,activebackground=self.sidebar['bg'],selectcolor=self.sidebar['bg'],bg=self.sidebar['bg'],highlightcolor=self.sidebar['bg'],fg='white',activeforeground='white',onvalue=1,offvalue=0,variable=temp)
-            self.questionCheckbox[key] = temp
-            #self.questionCheckbox[key].pack(side='bottom', anchor='w')
-            #self.questionCheckbox[key].select()
 
+            if self.questionCategories[key].type == Type.Math:
+                self.mathQuestionMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
+            
+            if self.questionCategories[key].type == Type.Science:
+                self.scienceQuestionMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
+            
+            if self.questionCategories[key].type == Type.Libs:
+                self.libsQuestionMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
+
+            
+            self.questionCheckbox[key] = temp
+
+        self.QuestionTypesMenu.add_cascade(label='Math',menu=self.mathQuestionMenu)
+        self.QuestionTypesMenu.add_cascade(label='Science',menu=self.scienceQuestionMenu)
+        self.QuestionTypesMenu.add_cascade(label='Mad Libs',menu=self.libsQuestionMenu)
         self.menuBar.add_cascade(label="Question Types", menu=self.QuestionTypesMenu)#Add question menu to menu bar
+        
 
         self.root.config(menu=self.menuBar) #update menu on root window
 

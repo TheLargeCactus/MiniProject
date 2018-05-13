@@ -5,9 +5,16 @@ from fractions import Fraction
 from fractions import gcd
 import math
 import random
+from enum import Enum,auto
 
 #Import Planet Trivia
 from Trivia import *
+
+#create type enumeration
+class Type(Enum):
+    Math = auto()
+    Science = auto()
+    Libs = auto()
 
 #Abstract Class for question box
 class QuestionBox:
