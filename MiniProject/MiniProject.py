@@ -162,9 +162,30 @@ class Application:
             
             self.questionCheckbox[key] = temp
 
+        #Add enable/disable functions to all submenus
+        self.mathQuestionMenu.add_separator()
+        self.mathQuestionMenu.add_command(label='Enable All', command=lambda:self.setAllQuestionValues(Type.Math, 1))
+
+        self.mathQuestionMenu.add_separator()
+        self.mathQuestionMenu.add_command(label='Disable All', command=lambda:self.setAllQuestionValues(Type.Math, 0))
+
+        self.scienceQuestionMenu.add_separator()
+        self.scienceQuestionMenu.add_command(label='Enable All', command=lambda:self.setAllQuestionValues(Type.Science, 1))
+
+        self.scienceQuestionMenu.add_separator()
+        self.scienceQuestionMenu.add_command(label='Disable All', command=lambda:self.setAllQuestionValues(Type.Science, 0))
+
+        self.libsQuestionMenu.add_separator()
+        self.libsQuestionMenu.add_command(label='Enable All', command=lambda:self.setAllQuestionValues(Type.Libs, 1))
+
+        self.libsQuestionMenu.add_separator()
+        self.libsQuestionMenu.add_command(label='Disable All', command=lambda:self.setAllQuestionValues(Type.Libs, 0))
+
+        #Add Questions to QuestionTypesMenu
         self.QuestionTypesMenu.add_cascade(label='Math',menu=self.mathQuestionMenu)
         self.QuestionTypesMenu.add_cascade(label='Science',menu=self.scienceQuestionMenu)
         self.QuestionTypesMenu.add_cascade(label='Mad Libs',menu=self.libsQuestionMenu)
+
         self.menuBar.add_cascade(label="Question Types", menu=self.QuestionTypesMenu)#Add question menu to menu bar
         
 
@@ -419,6 +440,12 @@ class Application:
 
         self.leaderboard = Leaderboard(self.root,profileData)
         return
+
+    def setAllQuestionValues(self, typeName, val):
+        for key in self.questionCategories:
+            if self.questionCategories[key].type == typeName:
+                self.questionCheckbox[key].set(val)
+            
 
     #function to cleaup questions
     def cleanup(self):
