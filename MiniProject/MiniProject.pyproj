@@ -30,6 +30,7 @@
     <Compile Include="Leaderboard.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MadLibs.py" />
     <Compile Include="MichaelDavid\CorrectDisplay.py" />
     <Compile Include="MichaelDavid\EndLevelScreen.py" />
     <Compile Include="MichaelDavid\Picture.py" />

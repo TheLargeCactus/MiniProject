@@ -10,6 +10,9 @@ from enum import Enum,auto
 #Import Planet Trivia
 from Trivia import *
 
+#Import Madlibs code
+from MadLibs import *
+
 #create type enumeration
 class Type(Enum):
     Math = auto()
@@ -801,8 +804,13 @@ class MadLibsQuestion(QuestionBox):
     def __init__(self,master):
         QuestionBox.__init__(self,master)#initialize base class
 
-        self.correctvalue = 20#set values for base class variables
-        self.wrongvalue = 10 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+        self.correctvalue = 0#set values for base class variables
+        self.wrongvalue = 0 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+
+        self.story = ""
+        self.storyParts = []
+        self.prompts = []
+        self.promptAnswsers = []
 
     def createQuestion(self):#overload of base class create question method
        self.questionFrame.pack(expand="True")
@@ -810,17 +818,128 @@ class MadLibsQuestion(QuestionBox):
        #Variables to hold data
        self.questionStringVar = tk.StringVar()
        self.wordEntryVar = tk.StringVar()
-
+       self.index = 0
 
        #Place question string on frame
        self.questionString = tk.Label(self.questionFrame,textvariable=self.questionStringVar,bg=self.questionFrame['bg'])
        self.questionString.pack(side='top')
 
-       
+       self.storyEntry = tk.Entry(self.questionFrame,textvariable=self.wordEntryVar)
+       self.storyEntry.pack(side='top')
 
-    #Question to verify answer
-    def getAnswer(self):
-        if self.radioButtonAnswer.get() == self.planetQuestion.answer:
+       self.nextButton = tk.Button(self.questionFrame,text='Next',command=self.next)
+       self.nextButton.pack(side='top')
+
+       self.next()
+
+    def checkAdj(self, word):
+        if 'Adjective' in dictionary.meaning(word):
             return True
         else:
             return False
+
+    def checkNoun(self, word):
+        if 'Noun' in dictionary.meaning(word):
+            return True
+        else:
+            return False
+
+    def checkPluralNoun(self, word):
+        if self.checkNoun(word) and word.endswith('s'):
+            return True
+        else:
+            return False
+
+    def checkAdverb(self, word):
+        if 'Adverb' in dictionary.meaning(word):
+            return True
+        else:
+            return False
+
+    def checkIngEnd(self, word):
+        if word.endswith('ing'):
+            return True
+        else:
+            return False
+
+    def validate(self,answer,key):
+        print(key + ' ' + answer)
+        if key == 'A':
+            return self.checkAdj(answer)
+            
+        if key == 'D':
+            return self.checkAdverb(answer)
+
+        if key == 'N':
+            return self.checkNoun(answer)
+
+        if key == 'P':
+            return self.checkPluralNoun(answer)
+
+        if key == '6':
+            return self.checkIngEnd(answer)
+
+        if key == '-':
+            return True
+
+        sys.exit()
+
+    def next(self):
+        
+        
+        if self.index >= len(self.prompts):
+            self.nextButton['state'] = 'disabled'
+            self.nextButton['text'] = 'Click Sumbit!'
+            self.questionStringVar.set(self.story % tuple(self.promptAnswsers))
+        else:
+            self.questionStringVar.set(self.prompts[self.index])
+
+        if self.index > 0:
+             if self.validate(self.wordEntryVar.get(),self.storyParts[self.index]):
+                 self.promptAnswsers.append(self.wordEntryVar.get())
+                 self.index += 1
+                 self.correctvalue += 5
+             else:
+                 self.displayIncorrect()
+                 self.correctvalue -= 2
+        else:
+            self.index +=1
+
+
+    def displayCorrect(self):
+        return 
+
+    def displayIncorrect(self):
+        self.correctLabel.configure(fg="Red",text='Invalid Entry, Please Try Again!')
+
+class Vacation(MadLibsQuestion):
+    def __init__(self, master):
+        MadLibsQuestion.__init__(self, master)
+
+        self.story = "A vacation is when you take a trip to some %s place with your %s family.\n Usually you go to some place that is near a/an %s or up on a/an %.\n A good vacation place is one where you can ride %s or play %s or go hunting for %s.\n I like to spend my time %s or %s. When parents go on a vacation, they spend their time eating three %s a day, and fathers play golf, and mothers sit around %s.\n Last summer, my little brother fell in a/an %s and got poison %s all over his %s.\n My family is going to go to %s, and I will practice %s.\n Parents need vacations more than kids because parents are always very %s and because they have to work %s hours every day all year making enough %s to pay for the vacation"
+        self.prompts = ["enter an adjective: ","enter an adjective: ","Enter a noun: ","Enter a noun: ","Enter a type of animal: ","Enter a type of game: ","Enter a plural noun: ","Enter a verb ending in 'ing': ","Enter a verb ending in 'ing': ","Enter a type of food: ","Enter a verb ending in 'ing': ","Enter a noun: ","Enter a type of plant: ","Enter a part of the body: ","Enter a place: ","Enter a verb ending in 'ing': ","enter an adjective: ","Enter a number: ","Enter a plural noun: "]
+        self.storyParts = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-']
+
+class StarWar(MadLibsQuestion):
+    def __init__(self, master):
+        MadLibsQuestion.__init__(self, master)
+
+        self.story = "A vacation is when you take a trip to some %s place with your %s family.\n Usually you go to some place that is near a/an %s or up on a/an %.\n A good vacation place is one where you can ride %s or play %s or go hunting for %s.\n I like to spend my time %s or %s. When parents go on a vacation, they spend their time eating three %s a day, and fathers play golf, and mothers sit around %s.\n Last summer, my little brother fell in a/an %s and got poison %s all over his %s.\n My family is going to go to %s, and I will practice %s.\n Parents need vacations more than kids because parents are always very %s and because they have to work %s hours every day all year making enough %s to pay for the vacation"
+        self.prompts = ["enter an adjective: ","enter an adjective: ","Enter a noun: ","Enter a noun: ","Enter a type of animal: ","Enter a type of game: ","Enter a plural noun: ","Enter a verb ending in 'ing': ","Enter a verb ending in 'ing': ","Enter a type of food: ","Enter a verb ending in 'ing': ","Enter a noun: ","Enter a type of plant: ","Enter a part of the body: ","Enter a place: ","Enter a verb ending in 'ing': ","enter an adjective: ","Enter a number: ","Enter a plural noun: "]
+        self.storyParts = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-']
+
+class WeirdDay(MadLibsQuestion):
+    def __init__(self, master):
+        MadLibsQuestion.__init__(self, master)
+
+        self.story = "A vacation is when you take a trip to some %s place with your %s family.\n Usually you go to some place that is near a/an %s or up on a/an %.\n A good vacation place is one where you can ride %s or play %s or go hunting for %s.\n I like to spend my time %s or %s. When parents go on a vacation, they spend their time eating three %s a day, and fathers play golf, and mothers sit around %s.\n Last summer, my little brother fell in a/an %s and got poison %s all over his %s.\n My family is going to go to %s, and I will practice %s.\n Parents need vacations more than kids because parents are always very %s and because they have to work %s hours every day all year making enough %s to pay for the vacation"
+        self.prompts = ["enter an adjective: ","enter an adjective: ","Enter a noun: ","Enter a noun: ","Enter a type of animal: ","Enter a type of game: ","Enter a plural noun: ","Enter a verb ending in 'ing': ","Enter a verb ending in 'ing': ","Enter a type of food: ","Enter a verb ending in 'ing': ","Enter a noun: ","Enter a type of plant: ","Enter a part of the body: ","Enter a place: ","Enter a verb ending in 'ing': ","enter an adjective: ","Enter a number: ","Enter a plural noun: "]
+        self.storyParts = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-']
+
+class Baseball(MadLibsQuestion):
+    def __init__(self, master):
+        MadLibsQuestion.__init__(self, master)
+
+        self.story = "A vacation is when you take a trip to some %s place with your %s family.\n Usually you go to some place that is near a/an %s or up on a/an %.\n A good vacation place is one where you can ride %s or play %s or go hunting for %s.\n I like to spend my time %s or %s. When parents go on a vacation, they spend their time eating three %s a day, and fathers play golf, and mothers sit around %s.\n Last summer, my little brother fell in a/an %s and got poison %s all over his %s.\n My family is going to go to %s, and I will practice %s.\n Parents need vacations more than kids because parents are always very %s and because they have to work %s hours every day all year making enough %s to pay for the vacation"
+        self.prompts = ["enter an adjective: ","enter an adjective: ","Enter a noun: ","Enter a noun: ","Enter a type of animal: ","Enter a type of game: ","Enter a plural noun: ","Enter a verb ending in 'ing': ","Enter a verb ending in 'ing': ","Enter a type of food: ","Enter a verb ending in 'ing': ","Enter a noun: ","Enter a type of plant: ","Enter a part of the body: ","Enter a place: ","Enter a verb ending in 'ing': ","enter an adjective: ","Enter a number: ","Enter a plural noun: "]
+        self.storyParts = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-']

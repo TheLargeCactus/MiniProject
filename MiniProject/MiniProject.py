@@ -97,6 +97,14 @@ class Application:
         self.questionCategories['Earth Question'].type = Type.Science
         self.questionCategories['Mars Question'] = MarsQuestion
         self.questionCategories['Mars Question'].type = Type.Science
+        self.questionCategories['Vacation Day'] = Vacation
+        self.questionCategories['Vacation Day'].type = Type.Libs
+        self.questionCategories['Weird Day'] = WeirdDay
+        self.questionCategories['Weird Day'].type = Type.Libs
+        self.questionCategories['Star War'] = StarWar
+        self.questionCategories['Star War'].type = Type.Libs
+        self.questionCategories['Baseball'] = Baseball
+        self.questionCategories['Baseball'].type = Type.Libs
 
         self.createGUI()#function defined in this class to create GUI elements
 
@@ -157,10 +165,11 @@ class Application:
                 self.scienceQuestionMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
             
             if self.questionCategories[key].type == Type.Libs:
+                temp.set(0)
                 self.libsQuestionMenu.add_checkbutton(label=key,onvalue=1,offvalue=0,variable=temp)
-
             
             self.questionCheckbox[key] = temp
+
 
         #Add enable/disable functions to all submenus
         self.mathQuestionMenu.add_separator()
