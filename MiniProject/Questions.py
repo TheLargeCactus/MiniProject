@@ -795,3 +795,32 @@ class MarsQuestion(QuestionBox):
             return True
         else:
             return False
+
+
+class MadLibsQuestion(QuestionBox):
+    def __init__(self,master):
+        QuestionBox.__init__(self,master)#initialize base class
+
+        self.correctvalue = 20#set values for base class variables
+        self.wrongvalue = 10 #wrong value needs to be greater than correctvalue * 1/4 as there are only 4 possible answers
+
+    def createQuestion(self):#overload of base class create question method
+       self.questionFrame.pack(expand="True")
+       
+       #Variables to hold data
+       self.questionStringVar = tk.StringVar()
+       self.wordEntryVar = tk.StringVar()
+
+
+       #Place question string on frame
+       self.questionString = tk.Label(self.questionFrame,textvariable=self.questionStringVar,bg=self.questionFrame['bg'])
+       self.questionString.pack(side='top')
+
+       
+
+    #Question to verify answer
+    def getAnswer(self):
+        if self.radioButtonAnswer.get() == self.planetQuestion.answer:
+            return True
+        else:
+            return False

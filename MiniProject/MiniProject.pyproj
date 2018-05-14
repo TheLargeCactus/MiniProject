@@ -24,7 +24,7 @@
     <Compile Include="CreateProfilePopup.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="KirstenBrandon\test.py">
+    <Compile Include="KirstenBrandon\MadLibs.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Leaderboard.py">
