@@ -639,7 +639,7 @@ class VenusQuestion(QuestionBox):
        self.questionFrame.pack(expand="True")
        
 
-       #Get Random Mercury Question
+       #Get Random Venus Question
        self.planetQuestion = random.choice(venus.questions)
        
 
@@ -695,7 +695,7 @@ class EarthQuestion(QuestionBox):
        self.questionFrame.pack(expand="True")
        
 
-       #Get Random Mercury Question
+       #Get Random Earth Question
        self.planetQuestion = random.choice(earth.questions)
        
 
@@ -751,7 +751,7 @@ class MarsQuestion(QuestionBox):
        self.questionFrame.pack(expand="True")
        
 
-       #Get Random Mercury Question
+       #Get Random Mars Question
        self.planetQuestion = random.choice(mars.questions)
        
 
