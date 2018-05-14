@@ -126,7 +126,7 @@ class Application:
     def createGUI(self):
 
         #set window options
-        self.root.title("Project Fly with Learning") #set window title
+        self.root.title("MadSciMath") #set window title
         self.root.minsize(width=800,height=600) #set minimum window size
 
         #create menubar section
